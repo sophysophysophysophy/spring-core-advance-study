@@ -1,9 +1,10 @@
-package hello.advanced.trace.hellotrace;
+package hello.advanced.trace.helloTrace;
 
 import hello.advanced.trace.TraceStatus;
 import org.junit.jupiter.api.Test;
 
-public class HelloTraceV2Test {
+
+class HelloTraceV2Test {
 
     @Test
     void begin_end() {
@@ -22,4 +23,5 @@ public class HelloTraceV2Test {
         trace.exception(status2, new IllegalStateException());
         trace.exception(status1, new IllegalStateException());
     }
+
 }

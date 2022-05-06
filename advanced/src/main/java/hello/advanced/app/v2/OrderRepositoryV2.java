@@ -2,7 +2,7 @@ package hello.advanced.app.v2;
 
 import hello.advanced.trace.TraceId;
 import hello.advanced.trace.TraceStatus;
-import hello.advanced.trace.hellotrace.HelloTraceV2;
+import hello.advanced.trace.helloTrace.HelloTraceV2;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -16,15 +16,14 @@ public class OrderRepositoryV2 {
 
         TraceStatus status = null;
         try {
-            status = trace.beginSync(traceId, "OrderRepository.save()");
-
+            status = trace.beginSync(traceId, "OrderRepositoryV1.save()");
             //저장 로직
             if (itemId.equals("ex")) {
                 throw new IllegalStateException("예외 발생!");
             }
             sleep(1000);
-
             trace.end(status);
+
         } catch (Exception e) {
             trace.exception(status, e);
             throw e;
@@ -39,4 +38,5 @@ public class OrderRepositoryV2 {
             e.printStackTrace();
         }
     }
+
 }

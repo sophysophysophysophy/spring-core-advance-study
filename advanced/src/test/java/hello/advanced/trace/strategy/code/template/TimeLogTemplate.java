@@ -1,25 +1,19 @@
-package hello.advanced.trace.strategy.code.strategy;
+package hello.advanced.trace.strategy.code.template;
 
 import lombok.extern.slf4j.Slf4j;
 
-/**
- * 전략을 파라미터로 전달 받는 방식
- */
-
 @Slf4j
-public class ContextV2 {
-    public void excute(Strategy strategy) {
+public class TimeLogTemplate {
+
+    public void excute(Callback callback) {
         long startTime = System.currentTimeMillis();
 
         //비즈니스 로직 발생
-        strategy.call();    //위임
+        callback.call();    //위
         //비스니스 로직 종료
 
         long endTime = System.currentTimeMillis();
         long resultTime = endTime - startTime;
         log.info("resultTime={}", resultTime);
-
     }
-
-
 }
